@@ -1,18 +1,47 @@
+// import 'package:flutter/material.dart';
+// import 'package:providers/provider.dart';
+
+// void main() {
+//   runApp(const MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   // This widget is the root of your application.
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//         primarySwatch: Colors.red,
+//       ),
+//       home: const MyProvider(),
+//     );
+//   }
+// }
+
 import 'package:flutter/material.dart';
-import 'package:providers/provider.dart';
+import 'package:provider/provider.dart';
+import 'package:providers/counter_provider/counter.dart';
+import 'counter_provider/homeoage.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (_)=>Counter()),
+  ],
+  child: const Provider(),
+  ));
+  
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Provider extends StatelessWidget {
+  const Provider({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
