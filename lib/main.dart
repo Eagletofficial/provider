@@ -24,15 +24,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:providers/counter_provider/counter.dart';
+import 'package:providers/counter_provider/newcounter.dart';
 import 'counter_provider/homeoage.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_)=>Counter()),
+    ChangeNotifierProvider(create: (_)=>User()),
   ],
   child: const Provider(),
   ));
-  
+
 }
 
 class Provider extends StatelessWidget {
@@ -49,3 +51,4 @@ class Provider extends StatelessWidget {
     );
   }
 }
+

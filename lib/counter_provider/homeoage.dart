@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:providers/counter_provider/Userpage.dart';
 import 'package:providers/counter_provider/counter.dart';
+import 'package:providers/counter_provider/newcounter.dart';
 import 'package:providers/counter_provider/secondpage.dart';
 
 class MyProvider extends StatefulWidget {
@@ -15,14 +17,14 @@ class _MyProviderState extends State<MyProvider> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:  Text('PROVIDER ${context.watch<Counter>().count}'),
+        title: Text('PROVIDER ${context.watch<Counter>().count}'),
         centerTitle: true,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Button Pressed ${context.watch<Counter>().count} Times'),
+            Text('Button Pressed ${context.watch<Counter>().count} Times\nUser ${context.watch<User>().user}'),
             const SizedBox(height: 10),
             ElevatedButton(
               onPressed: (() => context.read<Counter>().add()),
@@ -51,10 +53,17 @@ class _MyProviderState extends State<MyProvider> {
               }),
               child: const Text('PUSH'),
             ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: (() {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const UserPage()));
+              }),
+              child: const Text('UserPage'),
+            ),
           ],
         ),
       ),
-      
     );
   }
 }
